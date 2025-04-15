@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class InvestorController extends Controller
 {
     public function index() {
+
         $investors = Investor::orderBy('last_name')->paginate(10);
 
         return inertia('Investor/Index', compact('investors'));
@@ -35,6 +36,7 @@ class InvestorController extends Controller
             'address' => $validated['address'],
             'investment_type' => $validated['investment_type'],
         ]);
+
 
         return redirect()->route('investor.index');
 
